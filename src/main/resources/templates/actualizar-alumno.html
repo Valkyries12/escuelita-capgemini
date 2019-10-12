@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container w-25 mt-5">
+		<h3>Actualizar alumno</h3>
+		<hr>
+		<form action="#" th:action="@{/alumno-guardado}" th:object="${alumno}" method="POST">
+				<input type="hidden" th:field="*{id}" required>
+			<div class="form-group">
+				<input class="form-control" type="text" th:field="*{nombre}" placeholder="nombre" maxlength="10" required>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" th:field="*{apellido}" placeholder="apellido" maxlength="15" required>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" th:field="*{dni}" placeholder="dni" maxlength="8"  required>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" th:field="*{telefono}" placeholder="telefono" maxlength="12" required>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="email" th:field="*{email}" placeholder="email" maxlength="45" required>
+			</div>
+			<input class="btn btn-success mr-4" type="submit" value="actualizar">
+			<input class="btn btn-secondary" type="reset" value="limpiar">
+		</form>
+		<a class="btn btn-info mt-4" th:href="@{/}">Volver al listado</a>
+	</div>
+	<script src="validaciones.js"></script>
+</body>
+</html>

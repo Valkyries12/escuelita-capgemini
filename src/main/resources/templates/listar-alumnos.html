@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h3>alumnos</h3>
+		<hr>
+		<a class="btn btn-primary mb-2" th:href="@{/nuevo-alumno}"> Agregar alumno </a>
+		<a class="btn btn-secondary mb-2" th:href="@{/lista-temas}">Listar temas</a>
+		<a class="btn btn-secondary mb-2" th:href="@{/lista-cursos}">Listar cursos</a>
+		
+		<table th:object="${alumnos}" class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>DNI</th>
+					<th>Telefono</th>
+					<th>Email</th>
+					<th>Accion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each=" alumno : ${alumnos}">
+					<td th:text="${alumno.nombre}"></td>
+					<td th:text="${alumno.apellido}"></td>
+					<td th:text="${alumno.dni}"></td>
+					<td th:text="${alumno.telefono}"></td>
+					<td th:text="${alumno.email}"></td>
+					<td><a class="btn btn-info" th:href="@{/actualizar-alumno(alumnoId=${alumno.id})}">Actualizar</a>
+						<a class="btn btn-danger" th:href="@{/borrar-alumno(alumnoId=${alumno.id})}"
+						onclick="if(!(confirm('¿Estás seguro de eliminar al alumno?'))) return false">Borrar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
